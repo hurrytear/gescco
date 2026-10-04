@@ -49,4 +49,12 @@
 
 线上发现 Cloudflare 将代码中的 `openvpn-server@.service` 误判为邮箱并替换内容。生成器按 Cloudflare 官方支持的 `email_off` HTML 标记保护代码块，确保命令能够原样显示与复制，未修改域名的全局邮箱保护配置。参见 [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)。
 
-当前共 10 组文章译文；构建检查覆盖 28 个 HTML 页面、510 个站内链接、语言和章节对应关系，以及示例命令和参考链接一致性。搜索、RSS 与 sitemap 自动收录新文章。
+该次更新后共 10 组文章译文；构建检查覆盖 28 个 HTML 页面、510 个站内链接、语言和章节对应关系，以及示例命令和参考链接一致性。搜索、RSS 与 sitemap 自动收录新文章。
+
+## 阿里云与 IDC 专线 BGP 文章更新
+
+新增中英文 `aliyun-idc-bgp`，以双专线、双 CPE、VBR + ECR 为例，说明 IPv4 地址与 ASN 规划、ECR 关联顺序、BGP 邻居、前缀过滤和两个方向的主备选路。使用 FRRouting 10.4 配置片段展示 LOCAL_PREF 与 AS_PATH prepend，并明确 IDC 内部 iBGP、next hop 可达性和真实业务路由的前提。
+
+文章同时说明已有 CEN / 企业版 TR 的路由关联、学习、VPC 回程与动态路由源限制，覆盖业务访问控制、内部 DNS、BFD、分层验收、故障演练及回退。依据阿里云和 FRRouting 官方资料核对；仅使用通用示例地址和密钥占位符，没有配置实际专线或执行故障演练。
+
+当前共 11 组文章译文；构建检查覆盖 30 个 HTML 页面、548 个站内链接、语言和章节对应关系，以及示例命令和参考链接一致性。搜索、双语 RSS 与 sitemap 自动收录新文章。
