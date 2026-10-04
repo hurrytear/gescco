@@ -55,7 +55,7 @@ npm run check
 | Node.js | 22 |
 | 域名 | `gescco.com`、`www.gescco.com` |
 
-在 Pages 项目中绑定两个自定义域名，由 Pages 创建对应 DNS 记录。`www` 的请求通过 `_redirects` 跳转到根域名。已有邮件记录保留。推送到 `main` 后自动构建部署；构建检查失败时不会替换当前生产站点。
+在 Pages 项目中绑定两个自定义域名，由 Pages 创建对应 DNS 记录。`www` 的请求通过 Cloudflare 域名重定向规则跳转到根域名，并保留路径和查询参数；Pages 的 `_redirects` 只用于站内路径跳转。已有邮件记录保留。推送到 `main` 后自动构建部署；构建检查失败时不会替换当前生产站点。
 
 ## 内容约定
 

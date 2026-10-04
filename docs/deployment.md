@@ -13,9 +13,13 @@
 
 中英文内容独立生成：根路径默认中文，`/en/` 为英文。首页、目录、关于、全部 8 篇文章、检索索引及 RSS 都有对应语言版本。语言切换保留文章、分类、检索词及章节，页面提供 `lang`、canonical 和 hreflang；sitemap 收录两种语言。
 
-当前源代码已推送 GitHub；Pages 项目创建和域名绑定待完成 GitHub 集成的身份验证后继续。
+源代码已推送 GitHub `hurrytear/gescco`。Cloudflare Pages 项目 `gescco` 已创建，生产分支自动部署已启用。`gescco.com` 与 `www.gescco.com` 已添加为自定义域名，两条代理 CNAME 均指向 `gescco.pages.dev`；原有 5 条邮件记录保留。
 
-构建命令 `npm run build && npm run check`，输出目录 `dist`，生产分支 `main`。无需环境密钥、数据库或付费插件。绑定根域与 www 域名，统一到根域 URL。
+构建命令 `npm run build && npm run check`，输出目录 `dist`，生产分支 `main`，环境变量 `NODE_VERSION=22`。无需环境密钥、数据库或付费插件。
+
+域名重定向规则 `gescco www to canonical HTTPS` 已启用：匹配 `(http.host eq "www.gescco.com")`，目标 `concat("https://gescco.com", http.request.uri.path)`，状态码 301，保留查询字符串。此规则位于 Cloudflare 域名配置中；Pages 的 `_redirects` 不支持以完整域名作为源地址，只保留站内路径规则。
+
+上线检查确认：根域 HTTPS 返回 200；`https://www.gescco.com/en/notes/?q=DNS` 返回 301，目标为 `https://gescco.com/en/notes/?q=DNS`。本地构建检查覆盖 24 个 HTML 页面、428 个站内链接、8 组完整译文以及命令与参考链接一致性；两个 RSS 均包含 8 篇文章，sitemap 收录 22 个内容页面并提供语言对应关系。
 
 ## 更新与回退
 
