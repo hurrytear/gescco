@@ -47,4 +47,6 @@
 
 长文章的桌面目录增加窗口高度限制与独立滚动，避免末尾章节超出较矮窗口；手机布局仍为正常展开的目录。
 
+线上发现 Cloudflare 将代码中的 `openvpn-server@.service` 误判为邮箱并替换内容。生成器按 Cloudflare 官方支持的 `email_off` HTML 标记保护代码块，确保命令能够原样显示与复制，未修改域名的全局邮箱保护配置。参见 [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)。
+
 当前共 10 组文章译文；构建检查覆盖 28 个 HTML 页面、510 个站内链接、语言和章节对应关系，以及示例命令和参考链接一致性。搜索、RSS 与 sitemap 自动收录新文章。

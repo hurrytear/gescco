@@ -25,7 +25,8 @@ function markdown(body, ui) {
       while (i < lines.length && !lines[i].startsWith('```')) code.push(lines[i++]);
       if (i === lines.length) throw new Error('Unclosed code fence');
       i++;
-      html.push(`<div class="code-block"><div class="code-top"><span>${escape(lang || 'text')}</span><button type="button" class="copy-code" aria-label="${ui.copyLabel}">${ui.copy}</button></div><pre><code>${escape(code.join('\n'))}</code></pre></div>`);
+      // Preserve literal command syntax such as openvpn-server@.service at the CDN.
+      html.push(`<!--email_off--><div class="code-block"><div class="code-top"><span>${escape(lang || 'text')}</span><button type="button" class="copy-code" aria-label="${ui.copyLabel}">${ui.copy}</button></div><pre><code>${escape(code.join('\n'))}</code></pre></div><!--/email_off-->`);
     } else if (line.startsWith('## ')) {
       const title = line.slice(3), id = `section-${headings.length + 1}`;
       headings.push({ title, id });
