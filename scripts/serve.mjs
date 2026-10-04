@@ -17,7 +17,7 @@ createServer(async (req,res) => {
       file = path.join(file, 'index.html');
     }
     let data, status = 200;
-    try { data = await readFile(file); } catch { data = await readFile(path.join(dir, '404.html')); status = 404; file = '404.html'; }
+    try { data = await readFile(file); } catch { data = await readFile(path.join(dir, url.pathname.startsWith('/en/') ? 'en/404.html' : '404.html')); status = 404; file = '404.html'; }
     res.writeHead(status, {'Content-Type':types[path.extname(file)] || 'application/octet-stream','X-Content-Type-Options':'nosniff'});
     res.end(req.method === 'HEAD' ? undefined : data);
   } catch { res.writeHead(400); res.end('Bad request'); }

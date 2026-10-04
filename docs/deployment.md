@@ -11,6 +11,10 @@
 
 本站使用同一托管模式，并增加文章构建步骤：Markdown → 静态 HTML。
 
+中英文内容独立生成：根路径默认中文，`/en/` 为英文。首页、目录、关于、全部 8 篇文章、检索索引及 RSS 都有对应语言版本。语言切换保留文章、分类、检索词及章节，页面提供 `lang`、canonical 和 hreflang；sitemap 收录两种语言。
+
+当前源代码已推送 GitHub；Pages 项目创建和域名绑定待完成 GitHub 集成的身份验证后继续。
+
 构建命令 `npm run build && npm run check`，输出目录 `dist`，生产分支 `main`。无需环境密钥、数据库或付费插件。绑定根域与 www 域名，统一到根域 URL。
 
 ## 更新与回退

@@ -1,6 +1,6 @@
 # gescco · 运维笔记
 
-公开的中文运维技术笔记。网站：<https://gescco.com>。
+公开的中英文运维技术笔记，默认中文。网站：<https://gescco.com>，英文版：<https://gescco.com/en/>。
 
 ## 本地运行
 
@@ -37,7 +37,9 @@ npm run check
 - [官方文档](https://docs.kernel.org/)
 ```
 
-支持分类：Linux、Kubernetes、网络与代理、可观测性、数据与可靠性。Markdown 渲染器仅支持本项目使用的子集，不支持原始 HTML、复杂表格与嵌套列表；所有原始 HTML 会转义。文章页、目录、全文检索、RSS、sitemap 自动生成。CSS 和 JS 文件名带内容散列，避免更新后读取旧资源。
+在 `content/notes/en/` 创建同名英文 `.md` 文件，翻译标题、摘要、正文、标签与章节标题。英文分类对应为 Linux、Kubernetes、Networking & proxies、Observability、Data & reliability；`kind` 使用英文描述，日期和章节数量保持对应。命令语义及操作前提应一致。
+
+支持分类：Linux、Kubernetes、网络与代理、可观测性、数据与可靠性。Markdown 渲染器仅支持本项目使用的子集，不支持原始 HTML、复杂表格与嵌套列表；所有原始 HTML 会转义。两种语言的文章页、目录、全文检索、RSS、sitemap 自动生成。构建会检查译文配对；导航的语言切换保留对应文章、分类、检索词及章节锚点。中文使用根路径，英文使用 `/en/`，不按浏览器语言自动跳转；每次直接打开根首页都默认中文。CSS 和 JS 文件名带内容散列，避免更新后读取旧资源。
 
 ## Cloudflare Pages
 
