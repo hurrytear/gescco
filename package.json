@@ -1,0 +1,14 @@
+{
+  "name": "gescco",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "公开的运维技术笔记，部署于 Cloudflare Pages",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs"
+  }
+}
