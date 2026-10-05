@@ -55,11 +55,11 @@ Use a test application and STUN / TURN services you control. Third-party leak-te
 
 On personal desktop Firefox where web meetings and data channels are unnecessary, use the existing Boolean `media.peerconnection.enabled` preference to disable PeerConnection.[Firefox preference source](https://raw.githubusercontent.com/mozilla-firefox/firefox/main/modules/libpref/init/StaticPrefList.yaml).
 
-1. Record the current value and end active calls.
-2. Open `about:config` and search for the complete name `media.peerconnection.enabled`.
-3. Set the existing Boolean value to `false`. If the version has no such preference, do not blindly create one with the same name.
-4. Exit all Firefox processes, reopen the browser and validate API, meeting and data-channel behavior in new pages.
-5. Restore the recorded value to roll back. Ask the administrator to change a policy-locked setting on company devices.
+- Step 1: Record the current value and end active calls.
+- Step 2: Open `about:config` and search for the complete name `media.peerconnection.enabled`.
+- Step 3: Set the existing Boolean value to `false`. If the version has no such preference, do not blindly create one with the same name.
+- Step 4: Exit all Firefox processes, reopen the browser and validate API, meeting and data-channel behavior in new pages.
+- Step 5: Restore the recorded value to roll back. Ask the administrator to change a policy-locked setting on company devices.
 
 This JavaScript checks API exposure on a controlled test page. It requests no device permissions and creates no connection:
 
@@ -122,12 +122,12 @@ Deploy through GPO / MDM or the distribution's policy directory. Inspect Active 
 
 To broadly restrict unapproved WebRTC, combine managed endpoints, egress access controls and application identification. The following is a design sequence; implement actual rules according to existing equipment, business requirements and change procedures:
 
-1. Inventory required meeting, customer-support, remote-support, streaming and internal P2P distribution traffic. Separate office, meeting-device and guest zones.
-2. Deny unapproved direct Internet access for controlled office endpoints. Route web access through a managed proxy / security gateway. Restrict proxy CONNECT destinations too; arbitrary tunnels must not be allowed.
-3. Deny outbound UDP by default. Allow required DNS, time synchronization and approved meeting media by source device group, specific destination and protocol/port. A network-wide DNS / NTP port exception or missing IPv6 coverage is insufficient.
-4. Reject unapproved STUN / TURN, DTLS / SRTP and related applications. Maintain rules using current vendor signatures, domains and destinations. Avoid blocking an entire shared CDN address range indiscriminately.
-5. Address TCP/TLS 443 relays through application access controls, controlled destinations and endpoint restrictions. If arbitrary HTTPS destinations remain allowed, port ACLs alone cannot prove all WebRTC relays are blocked.
-6. P2P within one Layer 2 network may bypass the egress gateway. Use endpoint firewalls, wireless client isolation or segmentation. Check other exits, IPv6 and managed-device network switching.
+- Step 1: Inventory required meeting, customer-support, remote-support, streaming and internal P2P distribution traffic. Separate office, meeting-device and guest zones.
+- Step 2: Deny unapproved direct Internet access for controlled office endpoints. Route web access through a managed proxy / security gateway. Restrict proxy CONNECT destinations too; arbitrary tunnels must not be allowed.
+- Step 3: Deny outbound UDP by default. Allow required DNS, time synchronization and approved meeting media by source device group, specific destination and protocol/port. A network-wide DNS / NTP port exception or missing IPv6 coverage is insufficient.
+- Step 4: Reject unapproved STUN / TURN, DTLS / SRTP and related applications. Maintain rules using current vendor signatures, domains and destinations. Avoid blocking an entire shared CDN address range indiscriminately.
+- Step 5: Address TCP/TLS 443 relays through application access controls, controlled destinations and endpoint restrictions. If arbitrary HTTPS destinations remain allowed, port ACLs alone cannot prove all WebRTC relays are blocked.
+- Step 6: P2P within one Layer 2 network may bypass the egress gateway. Use endpoint firewalls, wireless client isolation or segmentation. Check other exits, IPv6 and managed-device network switching.
 
 TLS encryption limits network-side identification. If the organization already has reviewed TLS inspection, validate browser and meeting compatibility. Do not disable certificate validation by default to identify traffic. DNS blocklists and SNI matching are also incomplete evidence: direct IPs, shared infrastructure and encrypted names affect coverage.
 
