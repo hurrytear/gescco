@@ -195,7 +195,7 @@ Ordinary PAT, unmanaged carrier-grade NAT, GRE filtering, competing mappings or 
 
 ## 07 / Upstream NAT protocol mapping example
 
-This nftables sample illustrates translation on the **third, upstream NAT gateway**, not on the public Linux tunnel server. Its WAN interface is `wan0`; it owns or is correctly routed the public address `198.51.100.30` and can reach EG3210 at `10.0.0.2`. It serves one explicit peer and one internal endpoint. Multiple endpoints sharing one public IP need separate mapping and conntrack validation. [nftables NAT](https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_(NAT)).
+This nftables sample illustrates translation on the **third, upstream NAT gateway**, not on the public Linux tunnel server. Its WAN interface is `wan0`; it owns or is correctly routed the public address `198.51.100.30` and can reach EG3210 at `10.0.0.2`. It serves one explicit peer and one internal endpoint. Multiple endpoints sharing one public IP need separate mapping and conntrack validation. [nftables NAT](https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_%28NAT%29).
 
 ```nft
 # Illustrative upstream Linux NAT file; do not overwrite existing NAT rules.
@@ -378,7 +378,7 @@ For scenario B, remove the newly added `198.51.100.30/32` peer route instead. Re
 - [EG3200 implementation guide, GRE over IPsec chapter](https://www.ruijie.com.cn/fw/wd/82344/)
 - [Linux ip-tunnel](https://man7.org/linux/man-pages/man8/ip-tunnel.8.html)
 - [Linux IP sysctl](https://docs.kernel.org/networking/ip-sysctl.html)
-- [nftables NAT](https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_(NAT))
+- [nftables NAT](https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_%28NAT%29)
 - [nftables packet matching](https://wiki.nftables.org/wiki-nftables/index.php/Matching_packet_headers)
 - [RFC 3948: ESP UDP encapsulation](https://www.rfc-editor.org/rfc/rfc3948.html)
 - [strongSwan NAT Traversal](https://docs.strongswan.org/docs/latest/features/natTraversal.html)

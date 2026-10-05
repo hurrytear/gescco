@@ -195,7 +195,7 @@ sudo ip route add 10.20.0.0/24 via 172.20.255.1 dev gre-office
 
 ## 07 / 上游 NAT 的协议映射示例
 
-以下 nftables 示例用于说明 **第三台上游 NAT 网关** 的转换条件，不是在公网 Linux 隧道服务器上执行。假设它的 WAN 接口叫 `wan0`，持有或被正确路由到公网地址 `198.51.100.30`，并且能够到达 EG3210 的 `10.0.0.2`。这只适用于一个明确的对端与一个内网终端；多终端共享公网地址要另行验证映射和连接跟踪能力。[nftables 地址转换](https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_(NAT))。
+以下 nftables 示例用于说明 **第三台上游 NAT 网关** 的转换条件，不是在公网 Linux 隧道服务器上执行。假设它的 WAN 接口叫 `wan0`，持有或被正确路由到公网地址 `198.51.100.30`，并且能够到达 EG3210 的 `10.0.0.2`。这只适用于一个明确的对端与一个内网终端；多终端共享公网地址要另行验证映射和连接跟踪能力。[nftables 地址转换](https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_%28NAT%29)。
 
 ```nft
 # 上游 Linux NAT 的示意文件；不能覆盖已有 NAT 规则。
@@ -378,7 +378,7 @@ sudo ip route del 198.51.100.10/32 via 203.0.113.1 dev wan0
 - [EG3200 系列实施手册，GRE over ipsec 章节](https://www.ruijie.com.cn/fw/wd/82344/)
 - [Linux ip-tunnel](https://man7.org/linux/man-pages/man8/ip-tunnel.8.html)
 - [Linux IP sysctl](https://docs.kernel.org/networking/ip-sysctl.html)
-- [nftables NAT](https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_(NAT))
+- [nftables NAT](https://wiki.nftables.org/wiki-nftables/index.php/Performing_Network_Address_Translation_%28NAT%29)
 - [nftables 报文匹配](https://wiki.nftables.org/wiki-nftables/index.php/Matching_packet_headers)
 - [RFC 3948：ESP 的 UDP 封装](https://www.rfc-editor.org/rfc/rfc3948.html)
 - [strongSwan NAT Traversal](https://docs.strongswan.org/docs/latest/features/natTraversal.html)
