@@ -90,3 +90,11 @@
 文章包含宿主机与来宾 Netplan、按 MAC 匹配网卡、单默认路由、可选来源策略路由、VLAN 位置、分层验收及回退。资料于 2026-10-05 按 Ubuntu、libvirt、Netplan 和 Linux 官方文档核对，参考链接均可访问；使用文档保留地址，没有连接实际 KVM 宿主机或执行虚拟机与网络变更。
 
 本地构建检查通过 38 个 HTML 页面、702 个站内链接和 15 组完整译文，涵盖双语示例命令、参考链接、语言元数据与章节锚点。新文章两种语言各 15 个 Shell 代码块通过 Bash 语法检查，各 4 个 XML 片段与 3 个 YAML 示例通过解析；另行静态核对 CPU 拓扑、MAC 唯一性、网段不重叠、DHCP 池、网关及策略路由，并确认生成页面完整保留代码。搜索、双语 RSS 与 sitemap 由构建自动纳入新文章。
+
+## iptables + ipset 双公网域名分流文章更新
+
+新增中英文 `iptables-ipset-domain-dual-wan`，以 Ubuntu Server 24.04 LTS 的双 WAN IPv4 网关为例，提供 dnsmasq 与 ipset 联动、连接标记、两张策略路由表、固定公网 SNAT、DNS 访问约束和出口一致性检查。默认连接也保存 WAN1 标记，WAN2 集合优先；拒绝兜底路由与 FORWARD 约束防止已分类流量错误切换出口。
+
+文章说明共享 IP/CDN、DNS 缓存与 TTL、IPv6、网关本机流量、已有连接及入站 DNAT 的适用边界，并覆盖集合生命周期、启动顺序、分层验收与回退。资料于 2026-10-07 根据 dnsmasq、ipset、iptables/iproute2 手册、Linux 内核与 Netfilter conntrack-tools 文档核对；8 个参考页面可访问。配置未在真实网关或公网链路执行。
+
+本地构建检查通过 40 个 HTML 页面、740 个站内链接和 16 组完整译文。两种语言各 13 个 Shell 示例通过 Bash 语法检查；dnsmasq 配置及 iptables 片段完成结构核对，24 个离线规则模型场景验证默认分类、WAN2 优先、连接保持、掩码保留、SNAT、DNS 限制、回包与错误出口拦截。这些检查不替代目标 Linux 内核及真实链路验收。生成页面的 16 个代码块与源文一致，搜索、双语 RSS 与 sitemap 自动纳入新文章。
