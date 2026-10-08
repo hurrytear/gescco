@@ -21,6 +21,14 @@
 
 上线检查确认：根域 HTTPS 返回 200；`https://www.gescco.com/en/notes/?q=DNS` 返回 301，目标为 `https://gescco.com/en/notes/?q=DNS`。本地构建检查覆盖 24 个 HTML 页面、428 个站内链接、8 组完整译文以及命令与参考链接一致性；两个 RSS 均包含 8 篇文章，sitemap 收录 22 个内容页面并提供语言对应关系。
 
+## 百度搜索资源平台
+
+本站在百度使用规范站点 `https://gescco.com/`，与参考站点 `vsike.com` 分别验证和提交。公开验证文件 `public/baidu_verify_codeva-N4W1ghUEGq.html` 来自本站的百度后台，构建会原样复制到网站根目录；为保持站点验证状态，后续部署应保留此文件。
+
+首次接入时，在验证文件上线后点击后台「完成验证」。发布文章后，先确认线上页面和 `https://gescco.com/sitemap.xml` 已更新，再在本站的「普通收录」入口提交规范 URL。2026-10-08 的 sitemap 包含 38 个中英文页面，不含 404、搜索参数或 `www` 跳转地址。验证文件本身不加入 sitemap。
+
+如启用 API 提交，应从本站后台取得专属 Token，放在本地环境变量或 CI 密钥中；不得复用其他站点的 Token，也不得写入前端资源或 Git。当前构建只生成 sitemap 和允许抓取的 robots.txt，不会在构建时自动向百度发送链接。
+
 ## 更新与回退
 
 1. 修改文章或模板。

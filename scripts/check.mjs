@@ -7,8 +7,14 @@ const out = fileURLToPath(new URL('../dist/', import.meta.url));
 const files = [];
 async function walk(dir) { for (const entry of await readdir(dir, {withFileTypes:true})) { const p = path.join(dir,entry.name); if(entry.isDirectory()) await walk(p); else files.push(p); } }
 await walk(out);
+const verificationName = 'baidu_verify_codeva-N4W1ghUEGq.html';
+const verificationFile = path.join(out, verificationName);
+const verification = await readFile(verificationFile, 'utf8');
+assert.match(verification, /^[a-f0-9]{32}$/, 'Invalid Baidu verification file');
+assert.equal(verification, await readFile(new URL(`../public/${verificationName}`, import.meta.url), 'utf8'), 'Baidu verification file must be copied unchanged');
+const htmlFiles = files.filter(f => f.endsWith('.html') && f !== verificationFile);
 let links = 0;
-for (const file of files.filter(f=>f.endsWith('.html'))) {
+for (const file of htmlFiles) {
   const html = await readFile(file,'utf8');
   const locale = path.relative(out,file).startsWith(`en${path.sep}`) ? 'en' : 'zh';
   assert.ok(html.includes(`<html lang="${locales[locale].lang}">`), `Wrong document language in ${file}`);
@@ -55,4 +61,4 @@ for (const zh of versions.zh) {
   assert.deepEqual(executableBlocks(en.body), executableBlocks(zh.body), `Translated commands differ: ${zh.slug}`);
   assert.deepEqual(referenceUrls(en.body), referenceUrls(zh.body), `Translated references differ: ${zh.slug}`);
 }
-console.log(`Checked ${files.filter(f=>f.endsWith('.html')).length} HTML pages, ${links} local links, ${versions.zh.length} complete translation pairs, command parity, language metadata and anchors.`);
+console.log(`Checked ${htmlFiles.length} HTML pages, ${links} local links, ${versions.zh.length} complete translation pairs, command parity, language metadata, anchors and Baidu verification file.`);
