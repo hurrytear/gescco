@@ -23,9 +23,9 @@
 
 ## 百度搜索资源平台
 
-本站在百度使用规范站点 `https://gescco.com/`，与参考站点 `vsike.com` 分别验证和提交。公开验证文件 `public/baidu_verify_codeva-N4W1ghUEGq.html` 来自本站的百度后台，构建会原样复制到网站根目录；为保持站点验证状态，后续部署应保留此文件。
+本站在百度使用规范站点 `https://gescco.com/`，与参考站点 `vsike.com` 分别验证和提交。公开验证文件 `public/baidu_verify_codeva-N4W1ghUEGq.html` 来自本站的百度后台，构建会原样复制到网站根目录；页面同时包含本站专属的 `baidu-site-verification` 标签。为保持站点验证状态，后续部署应保留文件和标签。
 
-首次接入时，在验证文件上线后点击后台「完成验证」。发布文章后，先确认线上页面和 `https://gescco.com/sitemap.xml` 已更新，再在本站的「普通收录」入口提交规范 URL。2026-10-08 的 sitemap 包含 38 个中英文页面，不含 404、搜索参数或 `www` 跳转地址。验证文件本身不加入 sitemap。
+首次接入时，在验证文件或首页标签上线后选择对应方式，点击后台「完成验证」。Pages 会将 `.html` 文件地址跳转到无扩展名路径，可使用首页标签验证避开此跳转。发布文章后，先确认线上页面和 `https://gescco.com/sitemap.xml` 已更新，再在本站的「普通收录」入口提交规范 URL。2026-10-08 的 sitemap 包含 38 个中英文页面，不含 404、搜索参数或 `www` 跳转地址。验证文件本身不加入 sitemap。
 
 如启用 API 提交，应从本站后台取得专属 Token，放在本地环境变量或 CI 密钥中；不得复用其他站点的 Token，也不得写入前端资源或 Git。当前构建只生成 sitemap 和允许抓取的 robots.txt，不会在构建时自动向百度发送链接。
 

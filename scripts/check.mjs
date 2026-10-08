@@ -16,6 +16,7 @@ const htmlFiles = files.filter(f => f.endsWith('.html') && f !== verificationFil
 let links = 0;
 for (const file of htmlFiles) {
   const html = await readFile(file,'utf8');
+  assert.ok(html.includes('<meta name="baidu-site-verification" content="codeva-N4W1ghUEGq">'), `Missing Baidu verification tag in ${file}`);
   const locale = path.relative(out,file).startsWith(`en${path.sep}`) ? 'en' : 'zh';
   assert.ok(html.includes(`<html lang="${locales[locale].lang}">`), `Wrong document language in ${file}`);
   assert.match(html, /<meta name="description" content="[^"]+">/);
