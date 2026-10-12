@@ -31,6 +31,16 @@
 
 2026-10-08 接入结果：验证文件和标签已发布，线上首页返回 200 且包含正确标签，验证文件经 Pages 跳转后返回与原文件一致的内容。百度后台已添加本站，但文件验证和 HTML 标签验证均返回「无法连接到您网站的服务器」，所有权验证尚未通过，链接尚未提交。本地使用 Baiduspider User-Agent 请求首页返回 200，仅说明当前本地线路可访问，不能证明百度验证服务器的连通性。后续应先解决该连通性问题并完成后台验证，再确认本站配额并提交链接；不得将清单生成或配置上线记作提交成功。
 
+## Google Search Console
+
+2026-10-12 已添加并通过 DNS 验证域名资源 `sc-domain:gescco.com`。验证记录由 Cloudflare Domain Connect 添加；保留根域的 Google 验证 TXT，后续部署不需要额外的 HTML 验证文件或首页标签。
+
+已提交 `https://gescco.com/sitemap.xml`，并在实时抓取测试通过后重新提交一次，Google 均确认提交成功。当前 sitemap 包含 46 个中英文内容 URL；最终处理报告仍显示 `Couldn't fetch`、发现页面数为 0，因此尚不能记为 sitemap 读取成功。Google 对首页和 sitemap 的实际实时测试均显示 `URL is available to Google`；该结果与 sitemap 处理报告应分别记录，后续在后台复查具体错误与处理状态。
+
+Google 已接受首页、`/notes/self-hosted-sso-design/` 和 `/notes/bash-command-audit-design/` 的编入索引请求。`/notes/` 目录页的两次请求均返回后台提交错误，尚未成功。接受请求表示进入抓取队列，不表示已经收录或能够在搜索结果中找到；后续应使用 URL 检查与页面索引报告确认结果。
+
+已核对线上 robots.txt 允许抓取并声明 sitemap，首页返回 200、具有规范链接且允许索引。Cloudflare 流量样本中观察到经反向与正向 DNS 核验的 Googlebot 请求，安全事件样本未发现对应的 Google 抓取拦截；没有调整 WAF 配置。发布新文章时，构建会更新同一 sitemap，无需逐篇重复请求索引。
+
 ## 更新与回退
 
 1. 修改文章或模板。
