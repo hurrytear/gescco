@@ -12,6 +12,10 @@ const verificationFile = path.join(out, verificationName);
 const verification = await readFile(verificationFile, 'utf8');
 assert.match(verification, /^[a-f0-9]{32}$/, 'Invalid Baidu verification file');
 assert.equal(verification, await readFile(new URL(`../public/${verificationName}`, import.meta.url), 'utf8'), 'Baidu verification file must be copied unchanged');
+const verificationTarget = verificationName.replace(/\.html$/, '.txt');
+assert.equal(verification, await readFile(path.join(out, verificationTarget), 'utf8'), 'Baidu proxy target must match the original verification file');
+const redirectRules = (await readFile(path.join(out, '_redirects'), 'utf8')).split(/\r?\n/).map(line => line.trim());
+assert.ok(redirectRules.includes(`/${verificationName} /${verificationTarget} 200`), 'Baidu .html verification URL must proxy to its plain-text target');
 const htmlFiles = files.filter(f => f.endsWith('.html') && f !== verificationFile);
 let links = 0;
 for (const file of htmlFiles) {

@@ -47,6 +47,8 @@ function markdown(body, ui) {
 await rm(out, { recursive: true, force: true });
 await mkdir(out, { recursive: true });
 await cp(path.join(root, 'public'), out, { recursive: true });
+// Use a plain-text target so Pages can serve the exact Baidu .html URL without its automatic redirect.
+await cp(path.join(out, 'baidu_verify_codeva-N4W1ghUEGq.html'), path.join(out, 'baidu_verify_codeva-N4W1ghUEGq.txt'));
 const assets = {};
 for (const filename of ['site.css', 'site.js']) {
   const data = await readFile(path.join(root, 'public/assets', filename));
