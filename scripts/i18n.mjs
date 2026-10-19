@@ -4,6 +4,7 @@ export const categories = [
   { id: 'network', zh: '网络与代理', en: 'Networking & proxies' },
   { id: 'observability', zh: '可观测性', en: 'Observability' },
   { id: 'reliability', zh: '数据与可靠性', en: 'Data & reliability' },
+  { id: 'ai', zh: 'AI 与自动化', en: 'AI & automation' },
 ];
 
 export const locales = {
