@@ -5,6 +5,7 @@ export const categories = [
   { id: 'observability', zh: '可观测性', en: 'Observability' },
   { id: 'reliability', zh: '数据与可靠性', en: 'Data & reliability' },
   { id: 'ai', zh: 'AI 与自动化', en: 'AI & automation' },
+  { id: 'web', zh: 'Web 与小游戏', en: 'Web & mini games' },
 ];
 
 export const locales = {
